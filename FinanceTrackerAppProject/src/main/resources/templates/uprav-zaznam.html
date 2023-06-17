@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+</head>
+<body>
+
+<form action="#" method="post" th:action="@{/uloz-upraveny-zaznam}" th:object="${financialrecordFromDatabase}">
+    <h1>
+        <b><div style="text-align: center; font-family: Cooper Black; color: blue; text-decoration: underline; font-size: 37px">Edit Income / Expense</div></b>
+    </h1>
+
+    <input th:field="*{id}" type="hidden">
+
+    <h3>
+
+            <div style="text-align: center; font-family: Cooper Black">Record : <input type="text" th:field="*{name}"></div><br>
+            <div style="text-align: center; font-family: Cooper Black">Category : <input type="text" th:field="*{category}"></div><br>
+            <div style="text-align: center; font-family: Cooper Black">Amount : <input type="text" th:field="*{amount}"></div><br>
+            <div style="text-align: center; font-family: Cooper Black">Date : <input type="date" th:field="*{date}"></div><br>
+        <div style="text-align: center; font-family: Cooper Black">Type : <input type="text" th:field="*{type}"></div><br>
+    </h3>
+
+    <div style="text-align: center;">
+        <button style="font-size: 17px; font-weight: bold; font-family: Cooper Black" type="submit">Save changes</button></div>
+
+    <br>
+    <div style="text-align: center; font-family: Cooper Black">
+        <a th:href="@{/}">Homepage</a>
+    </div>
+
+</form>
+</body>
+</html>

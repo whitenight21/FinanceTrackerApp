@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Income/Expenses</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+
+    <style>
+        .table-container {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .table-container + div {
+            margin-top: 10px;
+        }
+    </style>
+
+    </head>
+    <body>
+
+        <div style="text-align: center; font-family: Cooper Black; color: blue; text-decoration: underline;"><br>
+            <h1>
+               Income / Expenses Table
+            </h1><br>
+        </div>
+
+        <div style="text-align: center; font-family: Cooper Black; width: 100%; height: 300px; .column1 { width: 100px; }" class="table-container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Amount</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                    <tr th:each="financialrecordObjekt : ${showAllRecords}">
+                    <td th:text="${financialrecordObjekt.name}"></td>
+                    <td th:text="${financialrecordObjekt.category}"></td>
+                    <td th:text="${financialrecordObjekt.amount}"></td>
+                    <td th:text="${financialrecordObjekt.date}"></td>
+                    <td th:text="${financialrecordObjekt.type}"></td>
+                    <td><a th:href="@{/uprav-zaznam/{id}(id=${financialrecordObjekt.id})}">Edit</a></td>
+                    <td><a th:href="@{/odstran-zaznam/{id}(id=${financialrecordObjekt.id})}" style="color: red;">Delete</a></td>
+                    </tr>
+                </tbody>
+
+
+            </table>
+
+
+        </div>
+
+    <br>
+        <div style="display: flex; justify-content: space-around;">
+            <div style="text-align: center; font-family: Cooper Black; width: 45%;">
+                <a href="/bar-chart">
+                    <div>Income / Expense Bar Chart</div>
+                </a>
+            </div>
+
+            <div style="text-align: center; font-family: Cooper Black; width: 45%;">
+                <a href="/dynamic-chart">
+                    <div>Income / Expense Dynamic Chart</div>
+                </a>
+            </div>
+        </div>
+
+        <br>
+
+        <div style="text-align: center; font-family: Cooper Black;">
+            <a th:href="@{/}">Homepage</a>
+        </div>
+
+</form>
+</body>
+</html>
